@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { AddCartButton, SubmitCartButton } from "../Cart/style";
-import { breakpoints, cores } from "../../styles";
+import styled from 'styled-components'
+import { AddCartButton, SubmitCartButton } from '../Cart/styles'
+import { breakpoints, cores } from '../../styles'
 
 export const DeliverContainer = styled.div`
   display: none;
@@ -33,7 +33,7 @@ export const DeliverContainer = styled.div`
   ${AddCartButton} {
     margin-top: 8px;
   }
-`;
+`
 
 export const Field = styled.div`
   display: block;
@@ -45,7 +45,7 @@ export const Field = styled.div`
     border: 1px solid ${cores.rosa};
     margin: 8px 0;
   }
-`;
+`
 
 export const PaymentContainer = styled.div`
   p {
@@ -89,7 +89,7 @@ export const PaymentContainer = styled.div`
       }
     }
   }
-`;
+`
 
 export const ConfirmedContainer = styled.div`
   color: ${cores.rosa};
@@ -112,4 +112,4 @@ export const ConfirmedContainer = styled.div`
     line-height: 18.75px;
     margin-bottom: 8px;
   }
-`;
+`

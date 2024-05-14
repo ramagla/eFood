@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import { breakpoints, cores } from "../../styles";
+import { breakpoints, cores } from '../../styles'
 
 export const ApresentacaoContainer = styled.div`
   @media (max-width: ${breakpoints.mobile}) {
@@ -27,18 +27,18 @@ export const ApresentacaoContainer = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    content: "";
+    content: '';
   }
-`;
+`
 export const ApresentacaoCategoria = styled.p`
   color: ${cores.branco};
   font-size: 32px;
   font-weight: 100;
   padding-top: 25px;
-`;
+`
 export const ApresentacaoPrato = styled.p`
   color: ${cores.branco};
   font-size: 32px;
   font-weight: 900;
   padding-top: 156.5px;
-`;
+`

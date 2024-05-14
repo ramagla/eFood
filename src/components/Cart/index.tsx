@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
 import {
   Overlay,
   CartContainer,
@@ -9,42 +9,42 @@ import {
   InfosItem,
   DeleteItemButton,
   InfosCart,
-  CartStage,
-} from "./style";
-import { RootReducer } from "../../store";
-import { close, removeItem, startCheckout } from "../../store/reducers/cart";
-import { priceFormat } from "../FoodList";
-import Checkout from "../Checkout";
+  CartStage
+} from './styles'
+import { RootReducer } from '../../store'
+import { close, removeItem, startCheckout } from '../../store/reducers/cart'
+import { priceFormat } from '../FoodList'
+import Checkout from '../Checkout'
 
 const Cart = () => {
   const { isOpen, pedido, isAddress, isCart } = useSelector(
     (state: RootReducer) => state.cart
-  );
-  const dispatch = useDispatch();
+  )
+  const dispatch = useDispatch()
   const openCart = () => {
-    dispatch(close());
-  };
+    dispatch(close())
+  }
   const activeCheckout = () => {
     if (getTotalPrice() > 0) {
-      dispatch(startCheckout());
+      dispatch(startCheckout())
     } else {
-      alert("Não há itens no carrinho");
+      alert('Não há itens no carrinho')
     }
-  };
+  }
 
   const getTotalPrice = () => {
     return pedido.reduce((acumulator, actualValue) => {
-      return (acumulator += actualValue.preco);
-    }, 0);
-  };
+      return (acumulator += actualValue.preco)
+    }, 0)
+  }
   const remItem = (id: number) => {
-    dispatch(removeItem(id));
-  };
+    dispatch(removeItem(id))
+  }
   return (
-    <CartContainer className={isOpen ? "is-open" : ""}>
+    <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={openCart} />
       <Sidebar>
-        <CartStage className={!isCart ? "is-checkout" : ""}>
+        <CartStage className={!isCart ? 'is-checkout' : ''}>
           <ul>
             {pedido.map((p) => (
               <ItemCart key={p.id}>
@@ -68,7 +68,7 @@ const Cart = () => {
         <Checkout checkoutStart={isAddress} priceTotal={getTotalPrice()} />
       </Sidebar>
     </CartContainer>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

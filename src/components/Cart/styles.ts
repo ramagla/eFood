@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { breakpoints, cores } from "../../styles";
-import removeIcon from "../../assets/lixeira.png";
+import styled from 'styled-components'
+import { breakpoints, cores } from '../../styles'
+import removeIcon from '../../assets/images/lixeira.png'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -10,7 +10,7 @@ export const Overlay = styled.div`
   height: 100%;
   background-color: #000;
   opacity: 0.8;
-`;
+`
 
 export const CartContainer = styled.div`
   position: fixed;
@@ -25,7 +25,7 @@ export const CartContainer = styled.div`
   &.is-open {
     display: flex;
   }
-`;
+`
 
 export const AddCartButton = styled.a`
   background-color: ${cores.rosa};
@@ -39,7 +39,7 @@ export const AddCartButton = styled.a`
   display: block;
   width: 100%;
   cursor: pointer;
-`;
+`
 
 export const SubmitCartButton = styled.button`
   background-color: ${cores.rosa};
@@ -53,7 +53,7 @@ export const SubmitCartButton = styled.button`
   display: block;
   width: 100%;
   cursor: pointer;
-`;
+`
 
 export const Sidebar = styled.aside`
   display: flex;
@@ -68,19 +68,19 @@ export const Sidebar = styled.aside`
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 220px;
   }
-`;
+`
 export const ItemCart = styled.li`
   background-color: ${cores.rosa};
   display: flex;
   padding: 8px;
   position: relative;
   margin-bottom: 16px;
-`;
+`
 export const ImageItem = styled.img`
   width: 80px;
   height: 80px;
   object-fit: cover;
-`;
+`
 export const InfosItem = styled.div`
   margin-left: 8px;
   display: flex;
@@ -95,7 +95,7 @@ export const InfosItem = styled.div`
     font-weight: 400;
     font-size: 14px;
   }
-`;
+`
 export const DeleteItemButton = styled.button`
   width: 16px;
   height: 16px;
@@ -106,7 +106,7 @@ export const DeleteItemButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-`;
+`
 export const InfosCart = styled.div`
   display: flex;
   justify-content: space-between;
@@ -114,10 +114,10 @@ export const InfosCart = styled.div`
   color: ${cores.palhaClara};
   weight: 700;
   font-size: 14px;
-`;
+`
 export const CartStage = styled.div`
   display: block;
   &.is-checkout {
     display: none;
   }
-`;
+`

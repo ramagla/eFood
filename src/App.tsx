@@ -1,8 +1,8 @@
-import { BrowserRouter } from "react-router-dom";
-import { GlobalCSS } from "./styles";
-import Rotas from "./routes";
-import { Provider } from "react-redux";
-import { store } from "./store";
+import { BrowserRouter } from 'react-router-dom'
+import { GlobalCSS } from './styles'
+import Rotas from './routes'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Rotas />
       </BrowserRouter>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App

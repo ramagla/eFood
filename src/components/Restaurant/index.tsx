@@ -1,16 +1,16 @@
-import Button from "../Button";
-import { Card, Photo, Title, Description, Rate, Categories } from "./styles";
-import Star from "../../assets/estrela.png";
-import { reduceDescription } from "../Food";
+import Button from '../Button'
+import { Card, Photo, Title, Description, Rate, Categories } from './styles'
+import Star from '../../assets/images/estrela.png'
+import { reduceDescription } from '../Food'
 
 type Props = {
-  RestaurantTitle: string;
-  RestaurantRate: number;
-  RestaurantDetails: string;
-  RestaurantPhoto: string;
-  RestaurantCategories: string[];
-  RestaurantToLink: string;
-};
+  RestaurantTitle: string
+  RestaurantRate: number
+  RestaurantDetails: string
+  RestaurantPhoto: string
+  RestaurantCategories: string[]
+  RestaurantToLink: string
+}
 
 const Restaurant = ({
   RestaurantTitle,
@@ -18,7 +18,7 @@ const Restaurant = ({
   RestaurantDetails,
   RestaurantPhoto,
   RestaurantCategories,
-  RestaurantToLink,
+  RestaurantToLink
 }: Props) => {
   return (
     <Card>
@@ -26,7 +26,7 @@ const Restaurant = ({
       <Categories>
         {RestaurantCategories.map((info) => {
           if (info) {
-            return <Button key={info}>{info}</Button>;
+            return <Button key={info}>{info}</Button>
           }
         })}
       </Categories>
@@ -42,7 +42,7 @@ const Restaurant = ({
         Saiba mais
       </Button>
     </Card>
-  );
-};
+  )
+}
 
-export default Restaurant;
+export default Restaurant

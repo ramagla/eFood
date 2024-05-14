@@ -1,47 +1,47 @@
-import { useDispatch, useSelector } from "react-redux";
-import { AddCartButton, SubmitCartButton } from "../Cart/styles";
+import { useDispatch, useSelector } from 'react-redux'
+import { AddCartButton, SubmitCartButton } from '../Cart/styles'
 import {
   DeliverContainer,
   Field,
   PaymentContainer,
-  ConfirmedContainer,
-} from "./styles";
+  ConfirmedContainer
+} from './styles'
 import {
   backtoCart,
   payment,
   confirmed,
   startCheckout,
-  closeAndFinish,
-} from "../../store/reducers/cart";
-import { RootReducer } from "../../store";
-import { priceFormat } from "../FoodList";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { usePurchaseMutation } from "../../services/api";
-import { IMaskInput } from "react-imask";
+  closeAndFinish
+} from '../../store/reducers/cart'
+import { RootReducer } from '../../store'
+import { priceFormat } from '../FoodList'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+import { usePurchaseMutation } from '../../services/api'
+import { IMaskInput } from 'react-imask'
 
 type Props = {
-  checkoutStart?: boolean;
-  priceTotal: number;
-};
+  checkoutStart?: boolean
+  priceTotal: number
+}
 
 const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
-  const [purchase, { isSuccess, data }] = usePurchaseMutation();
+  const [purchase, { isSuccess, data }] = usePurchaseMutation()
 
   const { isPayment, isConfirmed, pedido } = useSelector(
     (state: RootReducer) => state.cart
-  );
-  const dispatch = useDispatch();
+  )
+  const dispatch = useDispatch()
 
   const finish = () => {
-    dispatch(closeAndFinish());
-  };
+    dispatch(closeAndFinish())
+  }
   const backCart = () => {
-    dispatch(backtoCart());
-  };
+    dispatch(backtoCart())
+  }
   const backAdress = () => {
-    dispatch(startCheckout());
-  };
+    dispatch(startCheckout())
+  }
   const activePayment = () => {
     if (
       form.values.remetente &&
@@ -50,11 +50,11 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
       form.values.cep &&
       form.values.numero
     ) {
-      dispatch(payment());
+      dispatch(payment())
     } else {
-      alert("Preencha antes os dados obrigatórios!");
+      alert('Preencha antes os dados obrigatórios!')
     }
-  };
+  }
   const activeConfirmed = () => {
     if (
       form.values.cardName &&
@@ -63,49 +63,49 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
       form.values.anoVencimento &&
       form.values.mesVencimento
     ) {
-      dispatch(confirmed());
+      dispatch(confirmed())
     } else {
-      alert("Preencha antes os dados obrigatórios!");
+      alert('Preencha antes os dados obrigatórios!')
     }
-    console.log(pedido);
-  };
+    console.log(pedido)
+  }
 
   const form = useFormik({
     initialValues: {
-      remetente: "",
-      endereco: "",
-      cidade: "",
-      cep: "",
-      numero: "",
-      complemento: "",
-      cardName: "",
-      cardNumber: "",
-      cvv: "",
-      mesVencimento: "",
-      anoVencimento: "",
+      remetente: '',
+      endereco: '',
+      cidade: '',
+      cep: '',
+      numero: '',
+      complemento: '',
+      cardName: '',
+      cardNumber: '',
+      cvv: '',
+      mesVencimento: '',
+      anoVencimento: ''
     },
     validationSchema: Yup.object({
-      remetente: Yup.string().required("Campo obrigatório"),
-      endereco: Yup.string().required("Campo obrigatório"),
-      cidade: Yup.string().required("Campo obrigatório"),
-      cep: Yup.string().required("Campo obrigatório"),
-      numero: Yup.string().required("Campo obrigatório"),
+      remetente: Yup.string().required('Campo obrigatório'),
+      endereco: Yup.string().required('Campo obrigatório'),
+      cidade: Yup.string().required('Campo obrigatório'),
+      cep: Yup.string().required('Campo obrigatório'),
+      numero: Yup.string().required('Campo obrigatório'),
 
       cardName: Yup.string().when((values, schema) =>
-        isPayment ? schema.required("O campo é obrigatório") : schema
+        isPayment ? schema.required('O campo é obrigatório') : schema
       ),
       cardNumber: Yup.string().when((values, schema) =>
-        isPayment ? schema.required("O campo é obrigatório") : schema
+        isPayment ? schema.required('O campo é obrigatório') : schema
       ),
       cvv: Yup.string().when((values, schema) =>
-        isPayment ? schema.required("O campo é obrigatório") : schema
+        isPayment ? schema.required('O campo é obrigatório') : schema
       ),
       mesVencimento: Yup.string().when((values, schema) =>
-        isPayment ? schema.required("O campo é obrigatório") : schema
+        isPayment ? schema.required('O campo é obrigatório') : schema
       ),
       anoVencimento: Yup.string().when((values, schema) =>
-        isPayment ? schema.required("O campo é obrigatório") : schema
-      ),
+        isPayment ? schema.required('O campo é obrigatório') : schema
+      )
     }),
     onSubmit: (values) => {
       purchase({
@@ -116,8 +116,8 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             description: values.endereco,
             number: Number(values.numero),
             zipCode: values.cep,
-            complement: values.complemento,
-          },
+            complement: values.complemento
+          }
         },
         payment: {
           card: {
@@ -126,30 +126,30 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             code: Number(values.cvv),
             expires: {
               month: Number(values.mesVencimento),
-              year: Number(values.anoVencimento),
-            },
-          },
+              year: Number(values.anoVencimento)
+            }
+          }
         },
         products: [
           {
             id: 1,
-            price: 100,
-          },
-        ],
-      });
-    },
-  });
-  const getErroMassage = (campo: string, message?: string) => {
-    const estaAlterado = campo in form.touched;
-    const estaInvalido = campo in form.errors;
-    if (estaAlterado && estaInvalido) {
-      return message;
+            price: 100
+          }
+        ]
+      })
     }
-    return "";
-  };
+  })
+  const getErroMassage = (campo: string, message?: string) => {
+    const estaAlterado = campo in form.touched
+    const estaInvalido = campo in form.errors
+    if (estaAlterado && estaInvalido) {
+      return message
+    }
+    return ''
+  }
   return (
     <form onSubmit={form.handleSubmit}>
-      <DeliverContainer className={checkoutStart ? "show" : ""}>
+      <DeliverContainer className={checkoutStart ? 'show' : ''}>
         <h2>Entrega</h2>
         <Field>
           <label htmlFor="remetente">Quem irá receber</label>
@@ -162,7 +162,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             onBlur={form.handleBlur}
             value={form.values.remetente}
           />
-          <small>{getErroMassage("remetente", form.errors.remetente)}</small>
+          <small>{getErroMassage('remetente', form.errors.remetente)}</small>
         </Field>
         <Field>
           <label htmlFor="endereco">Endereço</label>
@@ -175,7 +175,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             onBlur={form.handleBlur}
             value={form.values.endereco}
           />
-          <small>{getErroMassage("endereco", form.errors.endereco)}</small>
+          <small>{getErroMassage('endereco', form.errors.endereco)}</small>
         </Field>
         <Field>
           <label htmlFor="cidade">Cidade</label>
@@ -188,7 +188,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             onBlur={form.handleBlur}
             value={form.values.cidade}
           />
-          <small>{getErroMassage("cidade", form.errors.cidade)}</small>
+          <small>{getErroMassage('cidade', form.errors.cidade)}</small>
         </Field>
         <div className="CEPNumber">
           <Field>
@@ -203,7 +203,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
               onBlur={form.handleBlur}
               value={form.values.cep}
             />
-            <small>{getErroMassage("cep", form.errors.cep)}</small>
+            <small>{getErroMassage('cep', form.errors.cep)}</small>
           </Field>
           <Field>
             <label htmlFor="numero">Número</label>
@@ -216,7 +216,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
               onBlur={form.handleBlur}
               value={form.values.numero}
             />
-            <small>{getErroMassage("numero", form.errors.numero)}</small>
+            <small>{getErroMassage('numero', form.errors.numero)}</small>
           </Field>
         </div>
         <Field>
@@ -240,7 +240,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
           <AddCartButton onClick={backCart}>Voltar ao carrinho</AddCartButton>
         </div>
       </DeliverContainer>
-      <PaymentContainer className={isPayment ? "show" : ""}>
+      <PaymentContainer className={isPayment ? 'show' : ''}>
         <p>Pagamento - Valor a pagar {priceFormat(priceTotal)}</p>
 
         <Field>
@@ -254,7 +254,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             onBlur={form.handleBlur}
             value={form.values.cardName}
           />
-          <small>{getErroMassage("cardName", form.errors.cardName)}</small>
+          <small>{getErroMassage('cardName', form.errors.cardName)}</small>
         </Field>
         <div className="fieldContainer">
           <Field>
@@ -270,7 +270,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
               value={form.values.cardNumber}
             />
             <small>
-              {getErroMassage("cardNumber", form.errors.cardNumber)}
+              {getErroMassage('cardNumber', form.errors.cardNumber)}
             </small>
           </Field>
           <Field>
@@ -285,7 +285,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
               onBlur={form.handleBlur}
               value={form.values.cvv}
             />
-            <small>{getErroMassage("cvv", form.errors.cvv)}</small>
+            <small>{getErroMassage('cvv', form.errors.cvv)}</small>
           </Field>
         </div>
         <div className="fieldContainer">
@@ -302,7 +302,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
               value={form.values.mesVencimento}
             />
             <small>
-              {getErroMassage("mesVencimento", form.errors.mesVencimento)}
+              {getErroMassage('mesVencimento', form.errors.mesVencimento)}
             </small>
           </Field>
           <Field>
@@ -318,7 +318,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
               value={form.values.anoVencimento}
             />
             <small>
-              {getErroMassage("anoVencimento", form.errors.anoVencimento)}
+              {getErroMassage('anoVencimento', form.errors.anoVencimento)}
             </small>
           </Field>
         </div>
@@ -331,7 +331,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
           </AddCartButton>
         </div>
       </PaymentContainer>
-      <ConfirmedContainer className={isConfirmed && isSuccess ? "show" : ""}>
+      <ConfirmedContainer className={isConfirmed && isSuccess ? 'show' : ''}>
         <h2>Pedido realizado - {data?.orderId} </h2>
         <p>
           Estamos felizes em informar que seu pedido já está em processo de
@@ -359,7 +359,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
         </div>
       </ConfirmedContainer>
     </form>
-  );
-};
+  )
+}
 
-export default Checkout;
+export default Checkout

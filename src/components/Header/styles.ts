@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import fundo from "../../assets/fundoHero.png";
-import { breakpoints, cores } from "../../styles";
+import styled from 'styled-components'
+import fundo from '../../assets/images/fundoHero.png'
+import { breakpoints, cores } from '../../styles'
 
 export const HeaderStyle = styled.header`
   background-image: url(${fundo});
@@ -25,7 +25,7 @@ export const HeaderStyle = styled.header`
       padding: 39px 10px;
     }
   }
-`;
+`
 export const Branding = styled.img`
   max-width: 125px;
   width: 100%;
@@ -36,7 +36,7 @@ export const Branding = styled.img`
   @media (max-width: ${breakpoints.mobile}) {
     margin: 15px;
   }
-`;
+`
 export const LinkRestaurantes = styled.a`
   font-size: 18px;
   font-weight: bold;
@@ -49,7 +49,7 @@ export const LinkRestaurantes = styled.a`
   @media (max-width: ${breakpoints.mobile}) {
     margin-top: 0;
   }
-`;
+`
 
 export const TextCart = styled.p`
   font-size: 18px;
@@ -63,4 +63,4 @@ export const TextCart = styled.p`
   @media (max-width: ${breakpoints.mobile}) {
     margin-top: 0;
   }
-`;
+`
