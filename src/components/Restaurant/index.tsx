@@ -1,6 +1,6 @@
 import Button from "../Button";
 import { Card, Photo, Title, Description, Rate, Categories } from "./styles";
-import Star from "../../assets/images/estrela.png";
+import Star from "../../assets/estrela.png";
 import { reduceDescription } from "../Food";
 
 type Props = {
