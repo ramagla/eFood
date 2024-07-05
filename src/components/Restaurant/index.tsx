@@ -1,7 +1,7 @@
+import React from 'react'
 import Button from '../Button'
 import { Card, Photo, Title, Description, Rate, Categories } from './styles'
-import Star from '../../assets/images/estrela.png'
-import { reduceDescription } from '../Food'
+import Star from '../../assets/estrela.png'
 
 type Props = {
   RestaurantTitle: string
@@ -37,7 +37,7 @@ const Restaurant = ({
           <img src={Star} alt="Estrela amarela" />
         </Rate>
       </div>
-      <Description>{reduceDescription(RestaurantDetails)}</Description>
+      <Description>{RestaurantDetails}</Description>
       <Button type="link" to={RestaurantToLink}>
         Saiba mais
       </Button>

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
-import removeIcon from '../../assets/images/lixeira.png'
+import { cores } from '../../styles'
+import removeIcon from '../../assets/lixeira.png'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -27,21 +27,7 @@ export const CartContainer = styled.div`
   }
 `
 
-export const AddCartButton = styled.a`
-  background-color: ${cores.rosa};
-  color: ${cores.vermelho};
-  border: none;
-  padding: 4px;
-  font-weight: 700;
-  text-decoration: none;
-  text-align: center;
-  font-size: 14px;
-  display: block;
-  width: 100%;
-  cursor: pointer;
-`
-
-export const SubmitCartButton = styled.button`
+export const AddCartButton = styled.button`
   background-color: ${cores.rosa};
   color: ${cores.vermelho};
   border: none;
@@ -65,9 +51,6 @@ export const Sidebar = styled.aside`
   max-width: 360px;
   width: 100%;
   position: relative;
-  @media (max-width: ${breakpoints.tablet}) {
-    max-width: 220px;
-  }
 `
 export const ItemCart = styled.li`
   background-color: ${cores.rosa};
@@ -111,13 +94,7 @@ export const InfosCart = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 40px 0 16px 0;
-  color: ${cores.palhaClara};
+  color: ${cores.bege};
   weight: 700;
   font-size: 14px;
-`
-export const CartStage = styled.div`
-  display: block;
-  &.is-checkout {
-    display: none;
-  }
 `

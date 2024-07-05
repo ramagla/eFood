@@ -1,19 +1,14 @@
+import React, { useState } from 'react'
 import Product from '../Restaurant'
 import { Container, List } from './styles'
-import { useState } from 'react'
-import Loader from '../Loader'
+import { Restaurant } from '../../pages/Home'
 
 export type Props = {
   restaurants: Restaurant[]
-  isLoading?: boolean
 }
 
-const ProductList = ({ restaurants, isLoading }: Props) => {
+const RestaurantList = ({ restaurants }: Props) => {
   const [destaque] = useState('Destaque da semana')
-
-  if (isLoading) {
-    return <Loader />
-  }
   return (
     <Container>
       <List>
@@ -36,4 +31,4 @@ const ProductList = ({ restaurants, isLoading }: Props) => {
   )
 }
 
-export default ProductList
+export default RestaurantList

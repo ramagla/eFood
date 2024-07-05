@@ -1,6 +1,6 @@
-import { HeroContainer, Slogan, Branding } from './styles'
-
-import logo from '../../assets/images/logo.png'
+import React from 'react'
+import { HeroContainer, Branding, Slogan } from './styles'
+import logo from '../../assets/logo.png'
 
 const Hero = () => (
   <HeroContainer>

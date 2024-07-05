@@ -1,11 +1,7 @@
 import styled from 'styled-components'
-
-import { breakpoints, cores } from '../../styles'
+import { cores } from '../../styles'
 
 export const ApresentacaoContainer = styled.div`
-  @media (max-width: ${breakpoints.mobile}) {
-    height: 100%;
-  }
   height: 280px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -15,11 +11,8 @@ export const ApresentacaoContainer = styled.div`
     max-width: 1024px;
     margin: 0 auto;
     z-index: 1;
-
-    @media (max-width: ${breakpoints.desktop}) {
-      padding: 0 10px;
-    }
   }
+
   &::after {
     position: absolute;
     top: 0;

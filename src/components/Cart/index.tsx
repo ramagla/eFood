@@ -1,3 +1,4 @@
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Overlay,
@@ -8,30 +9,18 @@ import {
   ImageItem,
   InfosItem,
   DeleteItemButton,
-  InfosCart,
-  CartStage
+  InfosCart
 } from './styles'
 import { RootReducer } from '../../store'
-import { close, removeItem, startCheckout } from '../../store/reducers/cart'
+import { close, removeItem } from '../../store/reducers/cart'
 import { priceFormat } from '../FoodList'
-import Checkout from '../Checkout'
 
 const Cart = () => {
-  const { isOpen, pedido, isAddress, isCart } = useSelector(
-    (state: RootReducer) => state.cart
-  )
+  const { isOpen, pedido } = useSelector((state: RootReducer) => state.cart)
   const dispatch = useDispatch()
   const openCart = () => {
     dispatch(close())
   }
-  const activeCheckout = () => {
-    if (getTotalPrice() > 0) {
-      dispatch(startCheckout())
-    } else {
-      alert('Não há itens no carrinho')
-    }
-  }
-
   const getTotalPrice = () => {
     return pedido.reduce((acumulator, actualValue) => {
       return (acumulator += actualValue.preco)
@@ -44,7 +33,7 @@ const Cart = () => {
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={openCart} />
       <Sidebar>
-        <CartStage className={!isCart ? 'is-checkout' : ''}>
+        <div>
           <ul>
             {pedido.map((p) => (
               <ItemCart key={p.id}>
@@ -61,11 +50,8 @@ const Cart = () => {
             <p>Valor total</p>
             <span>{priceFormat(getTotalPrice())}</span>
           </InfosCart>
-          <AddCartButton onClick={activeCheckout}>
-            Continuar com a entrega
-          </AddCartButton>
-        </CartStage>
-        <Checkout checkoutStart={isAddress} priceTotal={getTotalPrice()} />
+          <AddCartButton>Continuar com a compra</AddCartButton>
+        </div>
       </Sidebar>
     </CartContainer>
   )

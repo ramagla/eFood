@@ -1,5 +1,5 @@
+import React from 'react'
 import { BotaoContainer } from './styles'
-
 export type Props = {
   type?: 'link' | 'tag'
   title?: string

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Food from '../Food'
 import { AddCartButton } from './styles'
 import {
@@ -12,7 +12,8 @@ import {
   FoodDescription,
   CloseIcon
 } from './styles'
-import close from '../../assets/images/close 1.png'
+import close from '../../assets/close 1.png'
+import { Restaurant, Pedido } from '../../pages/Home'
 import { useDispatch } from 'react-redux'
 import { addItem, open } from '../../store/reducers/cart'
 
@@ -102,5 +103,4 @@ const FoodList = ({ restaurant, pedido }: Props) => {
     </>
   )
 }
-
 export default FoodList

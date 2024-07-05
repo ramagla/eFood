@@ -1,7 +1,8 @@
+import React from 'react'
+import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { GlobalCSS } from './styles'
 import Rotas from './routes'
-import { Provider } from 'react-redux'
 import { store } from './store'
 
 function App() {
@@ -14,5 +15,4 @@ function App() {
     </Provider>
   )
 }
-
 export default App

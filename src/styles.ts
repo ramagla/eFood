@@ -5,14 +5,7 @@ export const cores = {
   rosa: '#FFEBD9',
   branco: '#FFFFFF',
   dourado: '#FFB930',
-  palhaClara: '#FFF8F2'
-}
-
-export const breakpoints = {
-  desktop: '1024px',
-  tablet: '821px',
-  mobile: '430px',
-  iphone11: '414px'
+  bege: '#FFF8F2'
 }
 export const GlobalCSS = createGlobalStyle`
 *{
@@ -22,9 +15,8 @@ export const GlobalCSS = createGlobalStyle`
   font-family: Roboto, sans-serif;
   list-style: none;
 }
-
 body{
-  background-color: ${cores.palhaClara};
+  background-color: ${cores.bege};
   color: ${cores.vermelho};
 }
 `

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import banner from '../../assets/images/fundoHero.png'
+import banner from '../../assets/fundoHero.png'
 
 export const HeroContainer = styled.div`
   width: 100%;

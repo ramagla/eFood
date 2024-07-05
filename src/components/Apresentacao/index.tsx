@@ -1,8 +1,10 @@
+import React from 'react'
 import {
   ApresentacaoContainer,
   ApresentacaoCategoria,
   ApresentacaoPrato
 } from './styles'
+import { Restaurant } from '../../pages/Home'
 
 export type Props = {
   restaurant: Restaurant
@@ -15,5 +17,4 @@ const Apresentacao = ({ restaurant }: Props) => (
     </div>
   </ApresentacaoContainer>
 )
-
 export default Apresentacao
